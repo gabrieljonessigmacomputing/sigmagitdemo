@@ -188,6 +188,7 @@
           ],
           "metrics": [
             { "id": "metric-row-count",    "formula": "Count()",                                                                     "name": "row_count" },
+            { "id": "metric-units-sold",   "formula": "Sum([sales_quantity])",                                                       "name": "units_sold",          "format": { "kind": "number", "formatString": ",.0f" } },
             { "id": "metric-total-sales",  "formula": "Sum([sales_amount] * [sales_quantity])",                                      "name": "total_sales_amount",  "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
             { "id": "metric-total-cost",   "formula": "Sum([cost_amount] * [sales_quantity])",                                       "name": "total_cost_amount",   "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
             { "id": "metric-gross-profit", "formula": "[Metrics/total_sales_amount] - [Metrics/total_cost_amount]",                  "name": "gross_profit_amount", "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
