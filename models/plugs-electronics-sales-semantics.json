@@ -1,0 +1,200 @@
+{
+  "name": "Plugs Electronics Sales Semantics",
+  "folderId": "2690e351-39d5-41f3-acbd-c4e6b6bc0b12",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "page-main",
+      "name": "Main",
+      "elements": [
+        {
+          "id": "d_product",
+          "kind": "table",
+          "name": "d_product",
+          "source": {
+            "kind": "warehouse-table",
+            "connectionId": "bee6615c-7d11-435c-8819-e32207b27fe4",
+            "path": ["RETAIL", "PLUGS_ELECTRONICS", "D_PRODUCT"]
+          },
+          "columns": [
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_KEY",    "formula": "[D_PRODUCT/Product Key]",    "name": "product_key" },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_NAME",   "formula": "[D_PRODUCT/Product Name]",   "name": "product_name" },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_TYPE",   "formula": "[D_PRODUCT/Product Type]",   "name": "product_type" },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_FAMILY", "formula": "[D_PRODUCT/Product Family]", "name": "product_family" },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/SKU_NUMBER",     "formula": "[D_PRODUCT/Sku Number]",     "name": "sku_number" },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRICE",          "formula": "[D_PRODUCT/Price]",          "name": "price", "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_STATUS", "formula": "[D_PRODUCT/Product Status]", "name": "product_status" }
+          ]
+        },
+        {
+          "id": "d_store",
+          "kind": "table",
+          "name": "d_store",
+          "source": {
+            "kind": "warehouse-table",
+            "connectionId": "bee6615c-7d11-435c-8819-e32207b27fe4",
+            "path": ["RETAIL", "PLUGS_ELECTRONICS", "D_STORE"]
+          },
+          "columns": [
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_KEY",     "formula": "[D_STORE/Store Key]",     "name": "store_key" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_NAME",    "formula": "[D_STORE/Store Name]",    "name": "store_name" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_CITY",    "formula": "[D_STORE/Store City]",    "name": "store_city" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_STATE",   "formula": "[D_STORE/Store State]",   "name": "store_state" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_REGION",  "formula": "[D_STORE/Store Region]",  "name": "store_region" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/LATITUDE",      "formula": "[D_STORE/Latitude]",      "name": "latitude" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/LONGITUDE",     "formula": "[D_STORE/Longitude]",     "name": "longitude" }
+          ]
+        },
+        {
+          "id": "d_customer",
+          "kind": "table",
+          "name": "d_customer",
+          "source": {
+            "kind": "warehouse-table",
+            "connectionId": "bee6615c-7d11-435c-8819-e32207b27fe4",
+            "path": ["RETAIL", "PLUGS_ELECTRONICS", "D_CUSTOMER"]
+          },
+          "columns": [
+            { "id": "inode-2YXhapQpzYe8Y6dXgqb4jc/CUST_KEY",        "formula": "[D_CUSTOMER/Cust Key]",        "name": "cust_key" },
+            { "id": "inode-2YXhapQpzYe8Y6dXgqb4jc/CUST_NAME",       "formula": "[D_CUSTOMER/Cust Name]",       "name": "cust_name" },
+            { "id": "inode-2YXhapQpzYe8Y6dXgqb4jc/CUST_CITY",       "formula": "[D_CUSTOMER/Cust City]",       "name": "cust_city" },
+            { "id": "inode-2YXhapQpzYe8Y6dXgqb4jc/CUST_STATE",      "formula": "[D_CUSTOMER/Cust State]",      "name": "cust_state" },
+            { "id": "inode-2YXhapQpzYe8Y6dXgqb4jc/CUST_REGION",     "formula": "[D_CUSTOMER/Cust Region]",     "name": "cust_region" },
+            { "id": "inode-2YXhapQpzYe8Y6dXgqb4jc/AGE_GROUP",       "formula": "[D_CUSTOMER/Age Group]",       "name": "age_group" },
+            { "id": "inode-2YXhapQpzYe8Y6dXgqb4jc/LOYALTY_PROGRAM", "formula": "[D_CUSTOMER/Loyalty Program]", "name": "loyalty_program" }
+          ]
+        },
+        {
+          "id": "f_sales",
+          "kind": "table",
+          "name": "f_sales",
+          "source": {
+            "kind": "warehouse-table",
+            "connectionId": "bee6615c-7d11-435c-8819-e32207b27fe4",
+            "path": ["RETAIL", "PLUGS_ELECTRONICS", "F_SALES"]
+          },
+          "columns": [
+            { "id": "inode-lfe2elQZHPFHfgzmd0cmy/ORDER_NUMBER",     "formula": "[F_SALES/Order Number]",     "name": "order_number" },
+            { "id": "inode-lfe2elQZHPFHfgzmd0cmy/CUST_KEY",         "formula": "[F_SALES/Cust Key]",         "name": "cust_key" },
+            { "id": "inode-lfe2elQZHPFHfgzmd0cmy/STORE_KEY",        "formula": "[F_SALES/Store Key]",        "name": "store_key" },
+            { "id": "inode-lfe2elQZHPFHfgzmd0cmy/TRANSACTION_TYPE", "formula": "[F_SALES/Transaction Type]", "name": "transaction_type" },
+            { "id": "inode-lfe2elQZHPFHfgzmd0cmy/PURCHASE_METHOD",  "formula": "[F_SALES/Purchase Method]",  "name": "purchase_method" },
+            { "id": "inode-lfe2elQZHPFHfgzmd0cmy/DATE",             "formula": "[F_SALES/Date]",             "name": "transaction", "format": { "kind": "datetime", "formatString": "%b %d, %Y" } }
+          ],
+          "relationships": [
+            {
+              "id": "rel-fsales-dstore",
+              "name": "d_store",
+              "targetElementId": "d_store",
+              "keys": [
+                { "sourceColumnId": "inode-lfe2elQZHPFHfgzmd0cmy/STORE_KEY", "targetColumnId": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_KEY" }
+              ]
+            },
+            {
+              "id": "rel-fsales-dcustomer",
+              "name": "d_customer",
+              "targetElementId": "d_customer",
+              "keys": [
+                { "sourceColumnId": "inode-lfe2elQZHPFHfgzmd0cmy/CUST_KEY", "targetColumnId": "inode-2YXhapQpzYe8Y6dXgqb4jc/CUST_KEY" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f_point_of_sale",
+          "kind": "table",
+          "name": "f_point_of_sale",
+          "source": {
+            "kind": "warehouse-table",
+            "connectionId": "bee6615c-7d11-435c-8819-e32207b27fe4",
+            "path": ["RETAIL", "PLUGS_ELECTRONICS", "F_POINT_OF_SALE"]
+          },
+          "columns": [
+            { "id": "inode-4W790pmA5i19pSI2BjtHkl/ORDER_NUMBER",   "formula": "[F_POINT_OF_SALE/Order Number]",   "name": "order_number" },
+            { "id": "inode-4W790pmA5i19pSI2BjtHkl/PRODUCT_KEY",    "formula": "[F_POINT_OF_SALE/Product Key]",    "name": "product_key" },
+            { "id": "inode-4W790pmA5i19pSI2BjtHkl/SALES_QUANTITY", "formula": "[F_POINT_OF_SALE/Sales Quantity]", "name": "sales_quantity", "format": { "kind": "number", "formatString": ",.0f" } },
+            { "id": "inode-4W790pmA5i19pSI2BjtHkl/SALES_AMOUNT",   "formula": "[F_POINT_OF_SALE/Sales Amount]",   "name": "sales_amount",   "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "inode-4W790pmA5i19pSI2BjtHkl/COST_AMOUNT",    "formula": "[F_POINT_OF_SALE/Cost Amount]",    "name": "cost_amount",    "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } }
+          ],
+          "relationships": [
+            {
+              "id": "rel-fpos-dproduct",
+              "name": "d_product",
+              "targetElementId": "d_product",
+              "keys": [
+                { "sourceColumnId": "inode-4W790pmA5i19pSI2BjtHkl/PRODUCT_KEY", "targetColumnId": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_KEY" }
+              ]
+            },
+            {
+              "id": "rel-fpos-fsales",
+              "name": "f_sales",
+              "targetElementId": "f_sales",
+              "keys": [
+                { "sourceColumnId": "inode-4W790pmA5i19pSI2BjtHkl/ORDER_NUMBER", "targetColumnId": "inode-lfe2elQZHPFHfgzmd0cmy/ORDER_NUMBER" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f_pos_child_sigma",
+          "kind": "table",
+          "name": "f_pos_child_sigma",
+          "source": { "kind": "table", "elementId": "f_point_of_sale" },
+          "columns": [
+            { "id": "col-order-number",     "formula": "[f_point_of_sale/order_number]",                "name": "order_number" },
+            { "id": "col-product-key",      "formula": "[f_point_of_sale/product_key]",                 "name": "product_key" },
+            { "id": "col-sales-quantity",   "formula": "[f_point_of_sale/sales_quantity]",              "name": "sales_quantity",   "format": { "kind": "number", "formatString": ",.0f" } },
+            { "id": "col-sales-amount",     "formula": "[f_point_of_sale/sales_amount]",                "name": "sales_amount",     "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "col-cost-amount",      "formula": "[f_point_of_sale/cost_amount]",                 "name": "cost_amount",      "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "col-transaction-type", "formula": "[f_point_of_sale/f_sales/transaction_type]",    "name": "transaction_type" },
+            { "id": "col-purchase-method",  "formula": "[f_point_of_sale/f_sales/purchase_method]",     "name": "purchase_method" },
+            { "id": "col-transaction",      "formula": "[f_point_of_sale/f_sales/transaction]",         "name": "transaction",      "format": { "kind": "datetime", "formatString": "%b %d, %Y" } },
+            { "id": "col-product-name",     "formula": "[f_point_of_sale/d_product/product_name]",      "name": "product_name" },
+            { "id": "col-product-type",     "formula": "[f_point_of_sale/d_product/product_type]",      "name": "product_type" },
+            { "id": "col-product-family",   "formula": "[f_point_of_sale/d_product/product_family]",    "name": "product_family" },
+            { "id": "col-sku-number",       "formula": "[f_point_of_sale/d_product/sku_number]",        "name": "sku_number" },
+            { "id": "col-price",            "formula": "[f_point_of_sale/d_product/price]",             "name": "price",            "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "col-store-name",       "formula": "[f_point_of_sale/f_sales/d_store/store_name]",  "name": "store_name" },
+            { "id": "col-store-city",       "formula": "[f_point_of_sale/f_sales/d_store/store_city]",  "name": "store_city" },
+            { "id": "col-store-state",      "formula": "[f_point_of_sale/f_sales/d_store/store_state]", "name": "store_state" },
+            { "id": "col-store-region",     "formula": "[f_point_of_sale/f_sales/d_store/store_region]","name": "store_region" },
+            { "id": "col-cust-city",        "formula": "[f_point_of_sale/f_sales/d_customer/cust_city]","name": "cust_city" },
+            { "id": "col-cust-region",      "formula": "[f_point_of_sale/f_sales/d_customer/cust_region]","name": "cust_region" },
+            { "id": "col-age-group",        "formula": "[f_point_of_sale/f_sales/d_customer/age_group]","name": "age_group" },
+            { "id": "col-loyalty-program",  "formula": "[f_point_of_sale/f_sales/d_customer/loyalty_program]","name": "loyalty_program" },
+            { "id": "col-cust-name",        "formula": "[f_point_of_sale/f_sales/d_customer/cust_name]","name": "cust_name" },
+            { "id": "col-rls-access",       "formula": "(Lower(CurrentUserEmail()) = \"gabriel@sigmacomputing.com\") or (Lower(CurrentUserEmail()) = \"gabrielegjones@gmail.com\" and Lower([store_region]) = \"midwest\")", "name": "rls_access", "hidden": true }
+          ],
+          "filters": [
+            {
+              "id": "filter-rls",
+              "columnId": "col-rls-access",
+              "kind": "list",
+              "mode": "exclude",
+              "values": [null, false]
+            }
+          ],
+          "columnSecurities": [
+            {
+              "id": "cls-cust-name",
+              "criteria": {
+                "kind": "specific-users-and-teams",
+                "assignments": [
+                  { "type": "user", "userId": "cwZ4KTSWYPHhpLgJXO7iqJ9ujFvBq" }
+                ]
+              },
+              "restrictedColumns": ["col-cust-name"]
+            }
+          ],
+          "metrics": [
+            { "id": "metric-row-count",    "formula": "Count()",                                                                     "name": "row_count" },
+            { "id": "metric-total-sales",  "formula": "Sum([sales_amount] * [sales_quantity])",                                      "name": "total_sales_amount",  "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "metric-total-cost",   "formula": "Sum([cost_amount] * [sales_quantity])",                                       "name": "total_cost_amount",   "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "metric-gross-profit", "formula": "[Metrics/total_sales_amount] - [Metrics/total_cost_amount]",                  "name": "gross_profit_amount", "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "metric-gross-margin", "formula": "1 * [Metrics/gross_profit_amount] / NullIf([Metrics/total_sales_amount], 0)", "name": "gross_profit_margin", "format": { "kind": "number", "formatString": ".1%" } }
+          ]
+        }
+      ]
+    }
+  ]
+}
