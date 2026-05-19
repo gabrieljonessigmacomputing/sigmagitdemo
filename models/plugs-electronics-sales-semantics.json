@@ -21,6 +21,8 @@
             { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_NAME",   "formula": "[D_PRODUCT/Product Name]",   "name": "product_name" },
             { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_TYPE",   "formula": "[D_PRODUCT/Product Type]",   "name": "product_type" },
             { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_FAMILY", "formula": "[D_PRODUCT/Product Family]", "name": "product_family" },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_LINE",   "formula": "[D_PRODUCT/Product Line]",   "name": "product_line" },
+            { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_GROUP",  "formula": "[D_PRODUCT/Product Group]",  "name": "product_group" },
             { "id": "inode-1RvRYmbEFmiU0469H7djr7/SKU_NUMBER",     "formula": "[D_PRODUCT/Sku Number]",     "name": "sku_number" },
             { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRICE",          "formula": "[D_PRODUCT/Price]",          "name": "price", "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
             { "id": "inode-1RvRYmbEFmiU0469H7djr7/PRODUCT_STATUS", "formula": "[D_PRODUCT/Product Status]", "name": "product_status" }
@@ -36,13 +38,14 @@
             "path": ["RETAIL", "PLUGS_ELECTRONICS", "D_STORE"]
           },
           "columns": [
-            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_KEY",     "formula": "[D_STORE/Store Key]",     "name": "store_key" },
-            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_NAME",    "formula": "[D_STORE/Store Name]",    "name": "store_name" },
-            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_CITY",    "formula": "[D_STORE/Store City]",    "name": "store_city" },
-            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_STATE",   "formula": "[D_STORE/Store State]",   "name": "store_state" },
-            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_REGION",  "formula": "[D_STORE/Store Region]",  "name": "store_region" },
-            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/LATITUDE",      "formula": "[D_STORE/Latitude]",      "name": "latitude" },
-            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/LONGITUDE",     "formula": "[D_STORE/Longitude]",     "name": "longitude" }
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_KEY",      "formula": "[D_STORE/Store Key]",      "name": "store_key" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_NAME",     "formula": "[D_STORE/Store Name]",     "name": "store_name" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_CITY",     "formula": "[D_STORE/Store City]",     "name": "store_city" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_STATE",    "formula": "[D_STORE/Store State]",    "name": "store_state" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_ZIP_CODE", "formula": "[D_STORE/Store Zip Code]", "name": "store_zip_code" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/STORE_REGION",   "formula": "[D_STORE/Store Region]",   "name": "store_region" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/LATITUDE",       "formula": "[D_STORE/Latitude]",       "name": "latitude" },
+            { "id": "inode-6AXQzi4NLtR2BV78mZP8wl/LONGITUDE",      "formula": "[D_STORE/Longitude]",      "name": "longitude" }
           ]
         },
         {
@@ -152,17 +155,24 @@
             { "id": "col-product-name",     "formula": "[f_point_of_sale/d_product/product_name]",      "name": "product_name" },
             { "id": "col-product-type",     "formula": "[f_point_of_sale/d_product/product_type]",      "name": "product_type" },
             { "id": "col-product-family",   "formula": "[f_point_of_sale/d_product/product_family]",    "name": "product_family" },
+            { "id": "col-product-line",     "formula": "[f_point_of_sale/d_product/product_line]",      "name": "product_line" },
+            { "id": "col-product-group",    "formula": "[f_point_of_sale/d_product/product_group]",     "name": "product_group" },
             { "id": "col-sku-number",       "formula": "[f_point_of_sale/d_product/sku_number]",        "name": "sku_number" },
             { "id": "col-price",            "formula": "[f_point_of_sale/d_product/price]",             "name": "price",            "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
             { "id": "col-store-name",       "formula": "[f_point_of_sale/f_sales/d_store/store_name]",  "name": "store_name" },
             { "id": "col-store-city",       "formula": "[f_point_of_sale/f_sales/d_store/store_city]",  "name": "store_city" },
             { "id": "col-store-state",      "formula": "[f_point_of_sale/f_sales/d_store/store_state]", "name": "store_state" },
+            { "id": "col-store-zip-code",   "formula": "[f_point_of_sale/f_sales/d_store/store_zip_code]","name": "store_zip_code" },
             { "id": "col-store-region",     "formula": "[f_point_of_sale/f_sales/d_store/store_region]","name": "store_region" },
+            { "id": "col-latitude",         "formula": "[f_point_of_sale/f_sales/d_store/latitude]",    "name": "latitude" },
+            { "id": "col-longitude",        "formula": "[f_point_of_sale/f_sales/d_store/longitude]",   "name": "longitude" },
             { "id": "col-cust-city",        "formula": "[f_point_of_sale/f_sales/d_customer/cust_city]","name": "cust_city" },
+            { "id": "col-cust-state",       "formula": "[f_point_of_sale/f_sales/d_customer/cust_state]","name": "cust_state" },
             { "id": "col-cust-region",      "formula": "[f_point_of_sale/f_sales/d_customer/cust_region]","name": "cust_region" },
             { "id": "col-age-group",        "formula": "[f_point_of_sale/f_sales/d_customer/age_group]","name": "age_group" },
             { "id": "col-loyalty-program",  "formula": "[f_point_of_sale/f_sales/d_customer/loyalty_program]","name": "loyalty_program" },
-            { "id": "col-cust-name",        "formula": "[f_point_of_sale/f_sales/d_customer/cust_name]","name": "cust_name" },
+            { "id": "col-cust-name",        "formula": "[f_point_of_sale/f_sales/d_customer/cust_name]","name": "cust_name", "hidden": true },
+            { "id": "col-cust-name-masked", "formula": "If(Lower(CurrentUserEmail()) = \"gabrielegjones@gmail.com\", MD5([cust_name]), [cust_name])", "name": "cust_name_masked" },
             { "id": "col-rls-access",       "formula": "(Lower(CurrentUserEmail()) = \"gabriel@sigmacomputing.com\") or (Lower(CurrentUserEmail()) = \"gabrielegjones@gmail.com\" and Lower([store_region]) = \"midwest\")", "name": "rls_access", "hidden": true }
           ],
           "filters": [
