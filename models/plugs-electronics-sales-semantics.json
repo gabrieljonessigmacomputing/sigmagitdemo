@@ -194,6 +194,52 @@
             { "id": "metric-gross-profit", "formula": "[Metrics/total_sales_amount] - [Metrics/total_cost_amount]",                  "name": "gross_profit_amount", "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
             { "id": "metric-gross-margin", "formula": "1 * [Metrics/gross_profit_amount] / NullIf([Metrics/total_sales_amount], 0)", "name": "gross_profit_margin", "format": { "kind": "number", "formatString": ".1%" } }
           ]
+        },
+        {
+          "id": "f_pos_child_sql",
+          "kind": "table",
+          "name": "f_pos_child_sql",
+          "source": {
+            "kind": "sql",
+            "connectionId": "bee6615c-7d11-435c-8819-e32207b27fe4",
+            "statement": "SELECT\n  pos.ORDER_NUMBER, pos.PRODUCT_KEY, pos.SALES_QUANTITY, pos.SALES_AMOUNT, pos.COST_AMOUNT,\n  prd.PRODUCT_NAME, prd.PRODUCT_TYPE, prd.PRODUCT_FAMILY, prd.PRODUCT_LINE, prd.PRODUCT_GROUP, prd.PRICE,\n  sls.TRANSACTION_TYPE, sls.PURCHASE_METHOD, sls.DATE,\n  str.STORE_NAME, str.STORE_CITY, str.STORE_STATE, str.STORE_ZIP_CODE, str.STORE_REGION, str.LATITUDE, str.LONGITUDE,\n  CASE\n    WHEN LOWER({{#formula CurrentUserEmail()}}) = 'gabriel@sigmacomputing.com' THEN cus.CUST_NAME\n    WHEN LOWER({{#formula CurrentUserEmail()}}) = 'gabrielegjones@gmail.com'   THEN MD5(cus.CUST_NAME)\n    ELSE NULL\n  END AS CUST_NAME,\n  cus.CUST_CITY, cus.CUST_STATE, cus.CUST_REGION, cus.AGE_GROUP, cus.LOYALTY_PROGRAM\nFROM RETAIL.PLUGS_ELECTRONICS.F_POINT_OF_SALE pos\nINNER JOIN RETAIL.PLUGS_ELECTRONICS.F_SALES   sls ON pos.ORDER_NUMBER = sls.ORDER_NUMBER\nLEFT  JOIN RETAIL.PLUGS_ELECTRONICS.D_PRODUCT prd ON pos.PRODUCT_KEY  = prd.PRODUCT_KEY\nINNER JOIN RETAIL.PLUGS_ELECTRONICS.D_STORE   str ON sls.STORE_KEY    = str.STORE_KEY\nINNER JOIN RETAIL.PLUGS_ELECTRONICS.D_CUSTOMER cus ON sls.CUST_KEY    = cus.CUST_KEY\nWHERE\n  LOWER({{#formula CurrentUserEmail()}}) = 'gabriel@sigmacomputing.com'\n  OR (\n    LOWER({{#formula CurrentUserEmail()}}) = 'gabrielegjones@gmail.com'\n    AND LOWER(str.STORE_REGION) = 'midwest'\n  )\n"
+          },
+          "columns": [
+            { "id": "csql-order-number",     "formula": "[Custom SQL/ORDER_NUMBER]",     "name": "ORDER_NUMBER" },
+            { "id": "csql-product-key",      "formula": "[Custom SQL/PRODUCT_KEY]",      "name": "PRODUCT_KEY" },
+            { "id": "csql-sales-quantity",   "formula": "[Custom SQL/SALES_QUANTITY]",   "name": "SALES_QUANTITY",   "format": { "kind": "number", "formatString": ",.0f" } },
+            { "id": "csql-sales-amount",     "formula": "[Custom SQL/SALES_AMOUNT]",     "name": "SALES_AMOUNT",     "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "csql-cost-amount",      "formula": "[Custom SQL/COST_AMOUNT]",      "name": "COST_AMOUNT",      "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "csql-product-name",     "formula": "[Custom SQL/PRODUCT_NAME]",     "name": "PRODUCT_NAME" },
+            { "id": "csql-product-type",     "formula": "[Custom SQL/PRODUCT_TYPE]",     "name": "PRODUCT_TYPE" },
+            { "id": "csql-product-family",   "formula": "[Custom SQL/PRODUCT_FAMILY]",   "name": "PRODUCT_FAMILY" },
+            { "id": "csql-product-line",     "formula": "[Custom SQL/PRODUCT_LINE]",     "name": "PRODUCT_LINE" },
+            { "id": "csql-product-group",    "formula": "[Custom SQL/PRODUCT_GROUP]",    "name": "PRODUCT_GROUP" },
+            { "id": "csql-price",            "formula": "[Custom SQL/PRICE]",            "name": "PRICE",            "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "csql-transaction-type", "formula": "[Custom SQL/TRANSACTION_TYPE]", "name": "TRANSACTION_TYPE" },
+            { "id": "csql-purchase-method",  "formula": "[Custom SQL/PURCHASE_METHOD]",  "name": "PURCHASE_METHOD" },
+            { "id": "csql-date",             "formula": "[Custom SQL/DATE]",             "name": "DATE",             "format": { "kind": "datetime", "formatString": "%b %d, %Y" } },
+            { "id": "csql-store-name",       "formula": "[Custom SQL/STORE_NAME]",       "name": "STORE_NAME" },
+            { "id": "csql-store-city",       "formula": "[Custom SQL/STORE_CITY]",       "name": "STORE_CITY" },
+            { "id": "csql-store-state",      "formula": "[Custom SQL/STORE_STATE]",      "name": "STORE_STATE" },
+            { "id": "csql-store-zip",        "formula": "[Custom SQL/STORE_ZIP_CODE]",   "name": "STORE_ZIP_CODE" },
+            { "id": "csql-store-region",     "formula": "[Custom SQL/STORE_REGION]",     "name": "STORE_REGION" },
+            { "id": "csql-latitude",         "formula": "[Custom SQL/LATITUDE]",         "name": "LATITUDE" },
+            { "id": "csql-longitude",        "formula": "[Custom SQL/LONGITUDE]",        "name": "LONGITUDE" },
+            { "id": "csql-cust-name",        "formula": "[Custom SQL/CUST_NAME]",        "name": "CUST_NAME" },
+            { "id": "csql-cust-city",        "formula": "[Custom SQL/CUST_CITY]",        "name": "CUST_CITY" },
+            { "id": "csql-cust-state",       "formula": "[Custom SQL/CUST_STATE]",       "name": "CUST_STATE" },
+            { "id": "csql-cust-region",      "formula": "[Custom SQL/CUST_REGION]",      "name": "CUST_REGION" },
+            { "id": "csql-age-group",        "formula": "[Custom SQL/AGE_GROUP]",        "name": "AGE_GROUP" },
+            { "id": "csql-loyalty-program",  "formula": "[Custom SQL/LOYALTY_PROGRAM]",  "name": "LOYALTY_PROGRAM" }
+          ],
+          "metrics": [
+            { "id": "csql-metric-row-count",    "formula": "Count()",                                                                     "name": "row_count" },
+            { "id": "csql-metric-total-sales",  "formula": "Sum([SALES_AMOUNT] * [SALES_QUANTITY])",                                      "name": "total_sales_amount",  "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "csql-metric-total-cost",   "formula": "Sum([COST_AMOUNT] * [SALES_QUANTITY])",                                       "name": "total_cost_amount",   "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "csql-metric-gross-profit", "formula": "[Metrics/total_sales_amount] - [Metrics/total_cost_amount]",                  "name": "gross_profit_amount", "format": { "kind": "number", "formatString": "$.0f", "currencySymbol": "$" } },
+            { "id": "csql-metric-gross-margin", "formula": "1 * [Metrics/gross_profit_amount] / NullIf([Metrics/total_sales_amount], 0)", "name": "gross_profit_margin", "format": { "kind": "number", "formatString": ".1%" } }
+          ]
         }
       ]
     }
